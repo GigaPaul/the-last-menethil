@@ -633,11 +633,27 @@ drive_the_narrative.4 = {
                 trigger = {
                     is_allied_to = scope:main_supporter
                 }
-                desc = drive_the_narrative.4.desc_allied_supporter
+                desc = drive_the_narrative.4.desc_allied
             }
 
             # Yeah clearly here blackmail was necessary
-            desc = drive_the_narrative.4.desc_hooked_supporter
+            triggered_desc = {
+                trigger = {
+                    has_strong_usable_hook = scope:main_supporter
+                }
+                desc = drive_the_narrative.4.desc_hooked
+            }
+        }
+
+        first_valid = {
+            triggered_desc = {
+                trigger = {
+                    scope:main_supporter != scope:power_holder
+                }
+                desc = drive_the_narrative.4.desc.regent
+            }
+
+            desc = drive_the_narrative.4.desc.power_not_shared
         }
 
         desc = drive_the_narrative.4.desc_conclusion
@@ -657,7 +673,7 @@ drive_the_narrative.4 = {
 
 
     right_portrait = {
-        character = scope:main_supporter
+        character = scope:power_holder
 
         # Animation if supporter is an ally
         triggered_animation = {
@@ -674,9 +690,16 @@ drive_the_narrative.4 = {
             animation = shame
         }
     }
-
-
+    
     lower_left_portrait = {
+        character = scope:main_supporter
+        trigger = {
+            scope:main_supporter != scope:power_holder
+        }
+    }
+
+
+    lower_center_portrait = {
         character = scope:second
     }
     
@@ -695,6 +718,17 @@ drive_the_narrative.4 = {
             save_scope_as = main_supporter
             # For the event background
             save_scope_as = bg_override_char
+
+            if = {
+                limit = {
+                    has_diarchy_parameter = diarchy_type_is_entrenched_regency
+                }
+
+                diarch = { save_scope_as = power_holder }
+            }
+            else = {
+                save_scope_as = power_holder
+            }
         }
 
         # Select who will talk to Calia during the event
