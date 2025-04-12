@@ -674,6 +674,11 @@ drive_the_narrative.4 = {
             animation = shame
         }
     }
+
+
+    lower_left_portrait = {
+        character = scope:second
+    }
     
 
     option = {
