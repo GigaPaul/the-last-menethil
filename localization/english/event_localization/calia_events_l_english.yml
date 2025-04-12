@@ -63,11 +63,14 @@
 
   drive_the_narrative.4.title: "Drive the Narrative"
 
-  drive_the_narrative.4.desc_intro: "\"It'll be our turn soon.\" [second.GetName] whispers. I've not often seen [second.GetHerHim] stressed, but [second.GetHerHis] attitude is quite appropriate considering the circumstances.\n\n[main_supporter.GetTitledFirstName]'s council room lies before us, filled to the brim with vassals and powerful members of the [main_supporter.Custom('GetPolFactionName')]."
-  drive_the_narrative.4.desc_allied: "The [power_holder.GetTitleAsNameNoTooltip] casts me a look of sympathy as [power_holder.GetSheHe] finishes [power_holder.GetHerHis] speech and invites me beside [power_holder.GetHerHim]."
-  drive_the_narrative.4.desc_hooked: "The [power_holder.GetTitleAsNameNoTooltip] casts me a look of rancor as [power_holder.GetSheHe] finishes [power_holder.GetHerHis] speech and invites me beside [power_holder.GetHerHim]."
-  drive_the_narrative.4.desc.regent: "Regent"
-  drive_the_narrative.4.desc.power_not_shared: "Not shared"
+  drive_the_narrative.4.desc_intro: "\"It'll be our turn soon.\" [second.GetName] whispers. I've not often seen [second.GetHerHim] stressed, but [second.GetHerHis] attitude is quite appropriate considering the circumstances.\n\n"
+  drive_the_narrative.4.desc.bff: "I am glad to be back in my dear friend [main_supporter.GetFirstName]'s council room. It seems smaller now that it is filled to the brim with vassals and powerful members of the [main_supporter.Custom('GetPolFactionName')]. [main_supporter.GetFirstNameNoTooltip] and I exchange a knowing glance as [main_supporter.GetSheHe] finishes [main_supporter.GetHerHis] speech and invites me beside [main_supporter.GetHerHim]."
+  drive_the_narrative.4.desc.allied: "It is not the first time I see the inside of [main_supporter.GetTitledFirstName]'s council room. However, I had never seen it so full, with powerful vassals and members of the [main_supporter.Custom('GetPolFactionName')] standing shoulder to shoulder. The [main_supporter.GetTitleAsNameNoTooltip] casts me a confident look as [main_supporter.GetSheHe] finishes [main_supporter.GetHerHis] speech and invites me beside [main_supporter.GetHerHim]."
+  drive_the_narrative.4.desc.hooked: "While I've heard of [main_supporter.GetTitledFirstName]'s council room, nothing could have prepared me to see it filled to the brim with so many important people, mainly vassals and powerful members of the [main_supporter.Custom('GetPolFactionName')]. The [main_supporter.GetTitleAsNameNoTooltip] and I share a brief look as [main_supporter.GetSheHe] invites me beside [main_supporter.GetHerHim]."
+
+  drive_the_narrative.4.desc.bff.regent: "BFF Regent"
+  drive_the_narrative.4.desc.allied.regent: "Allied Regent"
+  drive_the_narrative.4.desc.hooked.regent: "Hooked Regent"
   
   drive_the_narrative.4.desc_conclusion: "\n\nThe [main_supporter.Custom('GetPolFactionName')] listens. I must speak."
 

@@ -7,6 +7,9 @@ is_a_possible_supporter = {
 
         # The player has a strong hook on the target
         root = { has_strong_usable_hook = scope:target }
+
+        # The player is the target's BFF
+        root = { has_relation_best_friend = scope:target }
     }
 }
 

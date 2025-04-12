@@ -628,33 +628,74 @@ drive_the_narrative.4 = {
         desc = drive_the_narrative.4.desc_intro
 
         first_valid = {
+            # NO REGENCY
+            # The supporter is the player's BFF!
+            triggered_desc = {
+                trigger = {
+                    scope:main_supporter = scope:power_holder
+                    has_relation_best_friend = scope:main_supporter
+                }
+                desc = drive_the_narrative.4.desc.bff
+            }
+
             # The supporter is an ally, no need to blackmail them!
             triggered_desc = {
                 trigger = {
+                    scope:main_supporter = scope:power_holder
                     is_allied_to = scope:main_supporter
                 }
-                desc = drive_the_narrative.4.desc_allied
+                desc = drive_the_narrative.4.desc.allied
             }
 
             # Yeah clearly here blackmail was necessary
             triggered_desc = {
                 trigger = {
+                    scope:main_supporter = scope:power_holder
                     has_strong_usable_hook = scope:main_supporter
                 }
-                desc = drive_the_narrative.4.desc_hooked
+                desc = drive_the_narrative.4.desc.hooked
             }
-        }
 
-        first_valid = {
+
+            # REGENCY
+            # The supporter is the player's BFF!
             triggered_desc = {
                 trigger = {
                     scope:main_supporter != scope:power_holder
+                    has_relation_best_friend = scope:main_supporter
                 }
-                desc = drive_the_narrative.4.desc.regent
+                desc = drive_the_narrative.4.desc.bff.regent
             }
 
-            desc = drive_the_narrative.4.desc.power_not_shared
+            # The supporter is an ally, no need to blackmail them!
+            triggered_desc = {
+                trigger = {
+                    scope:main_supporter != scope:power_holder
+                    is_allied_to = scope:main_supporter
+                }
+                desc = drive_the_narrative.4.desc.allied.regent
+            }
+
+            # Yeah clearly here blackmail was necessary
+            triggered_desc = {
+                trigger = {
+                    scope:main_supporter != scope:power_holder
+                    has_strong_usable_hook = scope:main_supporter
+                }
+                desc = drive_the_narrative.4.desc.hooked.regent
+            }
         }
+
+        # first_valid = {
+        #     triggered_desc = {
+        #         trigger = {
+        #             scope:main_supporter != scope:power_holder
+        #         }
+        #         desc = drive_the_narrative.4.desc.regent
+        #     }
+
+        #     desc = drive_the_narrative.4.desc.power_not_shared
+        # }
 
         desc = drive_the_narrative.4.desc_conclusion
     }
@@ -668,13 +709,27 @@ drive_the_narrative.4 = {
 
     left_portrait = {
         character = root
-        animation = personality_content
+        animation = chancellor
     }
 
 
     right_portrait = {
         character = scope:power_holder
 
+        # Animation if supporter is in entrenched regency. His regent is the one present
+        triggered_animation = {
+            trigger = {
+                scope:main_supporter != scope:power_holder
+            }
+            animation = personality_rational
+        }
+        # Animation if supporter is BFF
+        triggered_animation = {
+            trigger = {
+                root = { has_relation_best_friend = scope:main_supporter }
+            }
+            animation = ecstasy
+        }
         # Animation if supporter is an ally
         triggered_animation = {
             trigger = {

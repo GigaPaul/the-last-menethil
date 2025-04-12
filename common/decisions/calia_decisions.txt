@@ -102,6 +102,15 @@ calia_drive_narrative_decision = {
         
         OR = {
             custom_tooltip = {
+                text = calia_is_bff_with_leader
+                any_in_global_list = {
+                    variable = all_unions
+                    story_owner = { save_temporary_scope_as = union_leader }
+                    root = { has_relation_best_friend = scope:union_leader }
+                }
+            }
+            
+            custom_tooltip = {
                 text = calia_is_allied_to_leader
                 any_in_global_list = {
                     variable = all_unions
@@ -117,6 +126,7 @@ calia_drive_narrative_decision = {
                     root = { has_strong_usable_hook = scope:union_leader }
                 }
             }
+            
         }
     }
 
