@@ -6,9 +6,6 @@
   THEY_CHOOSE_MAIN_SUPPORTER_EFFECT: "[CHARACTER.GetShortUIName|U] chooses [TARGET_CHARACTER.GetShortUIName|U] and the #V [TARGET_CHARACTER.Custom('GetPolFactionName')]#! as [CHARACTER.GetHerHis] supporter"
   CHOOSE_MAIN_SUPPORTER_EFFECT: "Choose [TARGET_CHARACTER.GetShortUIName|U] and the #V [TARGET_CHARACTER.Custom('GetPolFactionName')]#! as their supporter"
 
-  set_competition_level: "[SelectLocalization(GreaterThanOrEqualTo_int32(competition_level, 3), 'testtruc', 'testtruc2')]"
-  testtruc: "bidukle"
-  testtruc2: "bidukle2"
   set_competition_level_intro: "#bold Thanks to the number of [union_leaders|E] competing for your [claims|E], you will gain #P "
   set_competition_level_outro: "#! bonuses #!"
   set_competition_level_minor.tt: "$set_competition_level_intro$minor$set_competition_level_outro$"
