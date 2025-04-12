@@ -31,44 +31,53 @@ quit_choosing_my_side_event = {
 }
 
 set_competition_level = {
-    custom_tooltip = {
-        text = set_competition_level
+    if = {
+        limit = {
+            $NB_SUPPORTERS$ > 6
+        }
 
-        if = {
-            limit = {
-                $NB_SUPPORTERS$ > 6
-            }
+
+        custom_tooltip = {
+            text = set_competition_level_major.tt
 
             save_scope_value_as = {
                 name = competition_level
                 value = 3
             }
         }
-        else_if = {
-            limit = {
-                $NB_SUPPORTERS$ > 3
-            }
+    }
+    else_if = {
+        limit = {
+            $NB_SUPPORTERS$ > 3
+        }
+
+        custom_tooltip = {
+            text = set_competition_level_medium.tt
 
             save_scope_value_as = {
                 name = competition_level
                 value = 2
             }
         }
-        else_if = {
-            limit = {
-                $NB_SUPPORTERS$ > 1
-            }
+    }
+    else_if = {
+        limit = {
+            $NB_SUPPORTERS$ > 1
+        }
+
+        custom_tooltip = {
+            text = set_competition_level_minor.tt
 
             save_scope_value_as = {
                 name = competition_level
                 value = 1
             }
         }
-        else = {
-            save_scope_value_as = {
-                name = competition_level
-                value = 0
-            }
+    }
+    else = {
+        save_scope_value_as = {
+            name = competition_level
+            value = 0
         }
     }
 }

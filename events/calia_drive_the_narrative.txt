@@ -175,6 +175,8 @@ drive_the_narrative.1 = {
             SUPPORTER = scope:second_ally
         }
 
+        set_competition_level = { NB_SUPPORTERS = list_size:calia_allies }
+
         trigger_event = drive_the_narrative.4
     }
     
@@ -191,6 +193,8 @@ drive_the_narrative.1 = {
         set_main_supporter = {
             SUPPORTER = scope:third_ally
         }
+
+        set_competition_level = { NB_SUPPORTERS = list_size:calia_allies }
 
         trigger_event = drive_the_narrative.4
     }
@@ -382,6 +386,8 @@ drive_the_narrative.2 = {
             SUPPORTER = scope:fourth_ally
         }
 
+        set_competition_level = { NB_SUPPORTERS = list_size:calia_allies }
+
         trigger_event = drive_the_narrative.4
     }
     
@@ -399,6 +405,8 @@ drive_the_narrative.2 = {
             SUPPORTER = scope:fifth_ally
         }
 
+        set_competition_level = { NB_SUPPORTERS = list_size:calia_allies }
+
         trigger_event = drive_the_narrative.4
     }
     
@@ -415,6 +423,8 @@ drive_the_narrative.2 = {
         set_main_supporter = {
             SUPPORTER = scope:sixth_ally
         }
+
+        set_competition_level = { NB_SUPPORTERS = list_size:calia_allies }
 
         trigger_event = drive_the_narrative.4
     }
@@ -561,6 +571,8 @@ drive_the_narrative.3 = {
         set_main_supporter = {
             SUPPORTER = scope:seventh_ally
         }
+
+        set_competition_level = { NB_SUPPORTERS = list_size:calia_allies }
 
         trigger_event = drive_the_narrative.4
     }
