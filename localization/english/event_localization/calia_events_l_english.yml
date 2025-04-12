@@ -1,0 +1,71 @@
+﻿l_english:
+  calia_events.2.title: "The Crown's Finest"
+  calia_events.2.desc: "As I walk on the outskirts of my camp to clear my head, I quickly get lost in my thoughts. The wind passes through the naked branches and the clouds are bathed in moonlight. I even think I hear a bird when a twig cracks behind me.\n\n"It's you!" the intruder says "I wasn't sure from afar, but you really are [ROOT.Char.GetLadyLord] [ROOT.Char.GetFirstNameNoTooltip]!"\n\nThe hairs on my body stand as my panicked mind fleetingly seeks an escape, but the armored figure kneels before me and plants [royal_guard.GetHerHis] sword in the ground.\n\n"I was—I am a member of the Royal Guard of Lordaeron." [royal_guard.GetSheHe] stammers "I thought I failed the [ROOT.Char.GetDynastyNameNoTooltip], but [royal_guard.GetFaith.HighGodName] led me to you!"\n"I beg you, [ROOT.Char.GetLadyLord] [ROOT.Char.GetFirstNameNoTooltip], allow me to serve you once more.""
+  calia_events.2.a: "Arise, my champion."
+  calia_events.2.b: "Please, I am not the one you think I am."
+
+
+  calia_events.3.title: "A Moment of Peace"
+  calia_events.3.desc: "I watch in the distance as the breeze caresses my face. We have traveled far and wide, visited numerous villages, and met a diverse number of people. We are now far from Lordaeron.\n\nAfter all these years, I can no longer call Lordaeron my home. Undead creatures and bloodthirsty warlords own these lost lands. Nobody there can call themselves alive anymore.\n\nBut here, we can start again. I am no longer a [ROOT.Char.GetDynasty.GetNameNoTooltip], and neither are my people.\nIt is now time to call ourselves something different."
+  calia_events.3.southshore: "I'm grateful to [where_family_started_scope.GetNameNoTooltip] for sheltering my family."
+  calia_events.3.mother: "[ROOT.Char.GetMother.GetDynastyHouseNameNoTooltip], like my [ROOT.Char.Custom2('RelationToMe', ROOT.Char.GetMother)]."
+  calia_events.3.current_location: "I feel safe here, [current_location_scope.GetNameNoTooltip] sounds safe."
+  calia_events.3.undecided: "It's an important decision, let's not be hasty."
+  calia_events.3.starting_location_house: "[ROOT.Char.GetMother.GetDynastyHouseNameNoTooltip]"
+
+  calia_events.3.southshore.tt: "Your [house|e] is called [where_family_started_scope.GetNameNoTooltip|V]"
+  calia_events.3.mother.tt: "Your [house|e] is called [mother_house_scope.GetNameNoTooltip|V]"
+  calia_events.3.current_location.tt: "Your [house|e] is called [current_location_scope.GetNameNoTooltip|V]"
+
+
+
+
+
+  drive_the_narrative.title: "Choosing my side"
+
+  drive_the_narrative.1.desc_init_couple_supporters: "After all these trials and tribulations, it was about time we received some good news. Two missives arrived this evening, each coming from one of our supporters. I must now ponder which to pick, for between the two, I can only choose one side.\n\nThe most powerful of them is [first_ally.GetName], but [second_ally.GetName] would grant us more independence should we choose [second_ally.GetHerHim]."
+  drive_the_narrative.1.desc_init_plenty_supporters: "After all these trials and tribulations, the good news finally came in a cascade as leaders of the world gathered in support of my cause. I must now ponder the pile of missives on my desk, for among all my supporters, I can only choose one side.\n\nThe most powerful of them is [first_ally.GetName], followed by [second_ally.GetName], then comes [third_ally.GetName]."
+  drive_the_narrative.1.desc_resume_plenty_supporters: "I reach for the missives I opened earlier and read their content again. Their elegant calligraphy and the quality of their royal seals speak to their writers' might.\n\nThe most powerful of them is [first_ally.GetName], followed by [second_ally.GetName], then comes [third_ally.GetName]."
+  
+  drive_the_narrative.1.desc_outro_too_much_supporters: "\n\nWhile those are the most powerful of my supporters, there are others who still want to join my cause."
+
+  drive_the_narrative.1.first_ally: "[first_ally.GetTitledFirstNameNoTooltip] is the most powerful."
+  drive_the_narrative.1.second_ally: "But [second_ally.GetTitledFirstNameNoTooltip] is a great contender."
+  drive_the_narrative.1.third_ally: "We shouldn't discard [third_ally.GetTitledFirstNameNoTooltip] too hastly."
+  drive_the_narrative.1.next_allies: "Let's see who else we have..."
+
+
+  drive_the_narrative.2.desc_last_supporter: "I finally draw the last of these missives, coming from [fourth_ally.GetName], no less.\n\nSure, [fourth_ally.GetHerHis] name doesn't strike fear into the heart of the world. However, pledging loyalty to the [fourth_ally.Custom('GetPolFactionName')] would guarantee us a more privileged place within it should we join.\n\nMy eyes grow weary of all this reading. As I skim these letters, I know that I must make a decision."
+  drive_the_narrative.2.desc_couple_supporters: "I finally come to the missives of [fourth_ally.GetName] and [fifth_ally.GetName].\n\nSure, these names don't strike fear into the heart of the world. However, pledging loyalty to lesser unions would guarantee us a more privileged place within them should we join."
+  drive_the_narrative.2.desc_plenty_supporters: "Next come [fourth_ally.GetName], [fifth_ally.GetName], and then [sixth_ally.GetName].\n\nSure, these names don't strike fear into the heart of the world. However, pledging loyalty to lesser unions would guarantee us a more privileged place within them should we join."
+  drive_the_narrative.2.desc_outro_too_much_supporters: "\n\nNevertheless, my desk is still full of missives to read."
+
+  drive_the_narrative.2.fourth_ally: "[fourth_ally.GetTitledFirstNameNoTooltip] would be receptive to my demands."
+  drive_the_narrative.2.fifth_ally: "Hm. Maybe [fifth_ally.GetTitledFirstNameNoTooltip] could be the one?"
+  drive_the_narrative.2.sixth_ally: "I'm sure [sixth_ally.GetTitledFirstNameNoTooltip] is well equipped for the situation."
+  drive_the_narrative.2.next_allies: "To the last of these letters now..."
+
+
+  drive_the_narrative.3.desc_last_supporter: "And that's all. I managed to gather quite the support in my quest for the throne. All these world leaders deserve my attention, as the future of my lands and my blood rests on—\n\nWhat's that? A final missive? From... [seventh_ally.GetName]. I almost forgot about [seventh_ally.GetHerHim]!\n\nAnswering [seventh_ally.GetHerHim] would be a strategic mistake of course.\nUnless..."
+  drive_the_narrative.3.seventh_ally: "For some reason, I'm drawn towards [seventh_ally.GetTitledFirstNameNoTooltip]."
+
+
+  drive_the_narrative.abandon: "I still need more time to think about it."
+  drive_the_narrative.abandon_tooltip: "#P You will be able to take this decision again...#!"
+  drive_the_narrative.abandon_reimburse_tooltip: "You get your @prestige_icon!#P [decision_prestige_cost]#! back"
+  drive_the_narrative.next_allies_tooltip: "You will browse your next available supporters"
+  drive_the_narrative.go_back: "I need to consult the first missives again."
+  drive_the_narrative.go_back_tooltip: "You will browse back to your first available supporters"
+
+
+
+
+
+  drive_the_narrative.4.title: "Drive the Narrative"
+
+  drive_the_narrative.4.desc_intro: "\"It'll be our turn soon.\" [second.GetName] whispers. I've not often seen [second.GetHerHim] stressed, but [second.GetHerHis] attitude is quite appropriate considering the circumstances.\n\n[main_supporter.GetTitledFirstName]'s council room lies before us, filled to the brim with vassals and powerful members of the [main_supporter.Custom('GetPolFactionName')]."
+  drive_the_narrative.4.desc_allied_supporter: "The [main_supporter.GetTitleAsNameNoTooltip] casts me a look of sympathy as [main_supporter.GetSheHe] finishes [main_supporter.GetHerHis] speech and invites me beside [main_supporter.GetHerHim]."
+  drive_the_narrative.4.desc_hooked_supporter: "The [main_supporter.GetTitleAsNameNoTooltip] casts me a look of rancor as [main_supporter.GetSheHe] finishes [main_supporter.GetHerHis] speech and invites me beside [main_supporter.GetHerHim]."
+  drive_the_narrative.4.desc_conclusion: "\n\nThe [main_supporter.Custom('GetPolFactionName')] listens. I must speak."
+
+  drive_the_narrative.4.confirm: "Ok."

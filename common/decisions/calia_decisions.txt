@@ -1,0 +1,134 @@
+﻿calia_disappear_decision = {
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/ep3_decision_laamp_negative.dds"
+    }
+	desc = calia_disappear_decision_desc
+    decision_group_type = adventurer
+    # should_create_alert = yes
+
+    is_shown = {
+        has_trait = fugitive_of_the_plaguelands
+		has_ep3_dlc_trigger = yes
+		government_has_flag = government_is_landless_adventurer
+        has_dynasty = yes
+    }
+
+	is_valid_showing_failures_only = {
+		is_available_adult = yes
+		is_at_war = no
+	}
+
+    is_valid = {
+        custom_tooltip = {
+            text = calia_min_fugitive_tooltip
+
+            has_trait_xp = {
+                trait = fugitive_of_the_plaguelands
+                value = 0
+            }
+        }
+
+        custom_tooltip = {
+            text = calia_camp_not_in_lordaeron_tooltip
+
+            NOT = {
+                capital_county.title_province = {
+                    geographical_region = world_eastern_kingdoms_lordaeron  
+                }
+            }
+        }
+
+        custom_tooltip = {
+            text = calia_is_not_legitimist_tooltip
+            NOT = {
+                has_realm_law = camp_purpose_legitimists
+            }
+        }
+    }
+
+    effect = {
+        remove_trait = fugitive_of_the_plaguelands
+        custom_tooltip = {
+            text = calia_renounce_all_claims_tooltip
+            every_claim = {
+                ROOT = { remove_claim = prev }
+            }
+        }
+
+		create_cadet_branch = yes
+
+        trigger_event = calia_events.3
+    }
+}
+
+
+
+
+
+calia_drive_narrative_decision = {
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/fp2_decision_struggle_conciliation.dds"
+    }
+	desc = calia_drive_narrative_decision_desc
+    decision_group_type = adventurer
+    # should_create_alert = yes
+
+    is_shown = {
+        has_trait = fugitive_of_the_plaguelands
+		has_ep3_dlc_trigger = yes
+		government_has_flag = government_is_landless_adventurer
+    }
+
+	is_valid_showing_failures_only = {
+		is_available_adult = yes
+		is_at_war = no
+	}
+
+    is_valid = {
+        custom_tooltip = {
+            text = calia_max_fugitive_tooltip
+
+            has_trait_xp = {
+                trait = fugitive_of_the_plaguelands
+                value = 100
+            }
+        }
+		prestige_level >= high_prestige_level
+        
+        custom_tooltip = {
+            text = calia_is_legitimist_tooltip
+            has_realm_law = camp_purpose_legitimists
+        }
+        
+        OR = {
+            custom_tooltip = {
+                text = calia_is_allied_to_leader
+                any_in_global_list = {
+                    variable = all_unions
+                    story_owner = { is_allied_to = root }
+                }
+            }
+
+            custom_tooltip = {
+                text = calia_has_strong_hook_on_leader
+                any_in_global_list = {
+                    variable = all_unions
+                    story_owner = { save_temporary_scope_as = union_leader }
+                    root = { has_strong_usable_hook = scope:union_leader }
+                }
+            }
+        }
+    }
+
+    cost = {
+        prestige = 2500
+    }
+
+    effect = {
+        remove_trait = fugitive_of_the_plaguelands
+		custom_tooltip = calia_drive_narrative_decision_effect_choose_supporter
+		# custom_tooltip = calia_drive_narrative_decision_effect_plenty_supporters_bonus
+
+        trigger_event = drive_the_narrative.0
+    }
+}

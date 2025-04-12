@@ -1,0 +1,21 @@
+﻿l_english:
+  calia_disappear_decision: "Disappear"
+  calia_disappear_decision_desc: "My family and I suffered for too long because of my name. We will make our own story."
+  calia_min_fugitive_tooltip: "You have #V 0#! [trait_level_track_xp|E] in [GetTrait('fugitive_of_the_plaguelands').GetName(GetNullCharacter)]"
+  calia_is_not_legitimist_tooltip: "You do #bold NOT #! have the [GetLaw('camp_purpose_legitimists').GetName] [camp_purpose|E]"
+  calia_renounce_all_claims_tooltip: "You renounce all your [claims|E]"
+  calia_disappear_decision_confirm: "Farewell, Plaguelands."
+
+  calia_drive_narrative_decision: "Drive the Narrative"
+  calia_drive_narrative_decision_desc: "For too long others tried to dictate my future. I am [ROOT.Char.GetFirstNameNoTooltip] [ROOT.Char.GetDynastyNameNoTooltip] and the world will know my name."
+  calia_max_fugitive_tooltip: "You have #V 100#! [trait_level_track_xp|E] in [GetTrait('fugitive_of_the_plaguelands').GetName(GetNullCharacter)]"
+  calia_is_legitimist_tooltip: "You must have the [GetLaw('camp_purpose_legitimists').GetName] [camp_purpose|E]"
+  calia_has_strong_hook_on_leader: "You have an available [strong_hook|E] on a [union_leader|E]"
+  calia_is_allied_to_leader: "You are [allied|E] to a [union_leader|E]"
+  calia_drive_narrative_decision_effect_choose_supporter: "Securing more [alliances|E] with [union_leaders|E] and [strong_hooks|E] on [union_leaders|E] will offer more benefits.\n\n#weak $calia_drive_narrative_decision_effect_plenty_supporters_bonus$#!"
+  calia_drive_narrative_decision_effect_choose_supporter_old: "If you have an available [strong_hook|E] or are [allied|E] with multiple [union_leaders|E], you will have to choose which [union|E] will support your [claims|E]."
+  calia_drive_narrative_decision_effect_plenty_supporters_bonus: "In the case of multiple [alliances|E] with [union_leaders|E] or [strong_hooks|E] on multiple [union_leaders|E], you will have to choose which [union|E] will press your [claims|E].\nThe more [union_leaders|E] that compete for you, the more bonuses will be available."
+  calia_drive_narrative_decision_confirm: "Let the Plaguelands know my name!"
+
+  calia_camp_not_in_lordaeron_tooltip: "Your [camp|E] is not in the #V Lordaeron#! region"
+  set_main_supporter: "Bidule"

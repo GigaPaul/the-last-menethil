@@ -1,0 +1,9 @@
+﻿l_english:
+  IS_A_UNION_LEADER_TRIGGER: "Is a [union_leader|E]"
+  I_AM_A_UNION_LEADER_TRIGGER: "You are a [union_leader|E]"
+  THEY_ARE_A_UNION_LEADER_TRIGGER: "[CHARACTER.GetShortUIName] is a [union_leader|E]"
+  NONE_ARE_A_UNION_LEADER_TRIGGER: "They are a [union_leader|E]"
+  NOT_IS_A_UNION_LEADER_TRIGGER: "Is #bold not#! a [union_leader|E]"
+  NOT_I_AM_A_UNION_LEADER_TRIGGER: "I am #bold not#! a [union_leader|E]"
+  NOT_THEY_ARE_A_UNION_LEADER_TRIGGER: "[CHARACTER.GetShortUIName] is #bold not#! a [union_leader|E]"
+  NOT_NONE_ARE_A_UNION_LEADER_TRIGGER: "They are #bold not#! a [union_leader|E]"

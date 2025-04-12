@@ -1,0 +1,67 @@
+# Called from code after history generation
+# Empty scope
+on_game_start_after_lobby = {
+    on_actions = {
+        on_game_start_calia
+    }
+}
+
+on_game_start_calia = {
+    effect = {
+		if = {
+			limit = {
+				has_ep3_dlc_trigger = yes
+				current_date >= 603.5.1
+			}
+
+			# Calia Menethil
+			character:60004 ?= {
+				if = {
+					limit = {
+						is_alive = yes
+						is_landless_adventurer = yes
+					}
+					add_realm_law_skip_effects = camp_purpose_legitimists
+				}
+
+
+				location = {
+					save_scope_as = current_location
+				}
+
+				
+				create_character = {
+					location = scope:current_location
+					template = lordaeron_royal_guard_character
+					employer=character:60004
+				}
+				create_character = {
+					location = scope:current_location
+					template = lordaeron_royal_guard_character
+					employer=character:60004
+				}
+
+				trigger_event = {
+					id = calia_events.1
+					days = { 1 2 }
+				}
+			}
+
+			# Jeanne, daughter of Calia
+			character:60677 ?= {
+				if = {
+					limit = {
+						is_alive = yes
+						NOT = { is_courtier_of = character:60004 }
+					}
+				}
+				location = {
+					set_global_variable = {
+						name = family_starting_location
+						value = this
+					}
+				}
+			}
+		}
+    }
+}

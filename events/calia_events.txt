@@ -1,0 +1,307 @@
+ namespace = calia_events
+
+
+calia_events.1 = {
+    type = character_event
+    title = calia_events.1.title
+    desc = calia_events.1.desc
+    theme = plague
+
+    option = {
+        name = calia_events.1.a
+        add_stress = medium_stress_impact_loss
+		add_trait_xp = {
+			trait = fugitive_of_the_plaguelands
+			value = 10
+		}
+    }
+
+    option = {
+        name = calia_events.1.b
+        add_stress = medium_stress_impact_gain
+    }
+
+    left_portrait = {
+        character = root
+        animation = worry
+    }
+
+    right_portrait = {
+        character = scope:daughter_jeanne
+        animation = crying
+    }
+
+    lower_right_portrait = {
+        character = scope:husband_kiril
+    }
+
+    trigger = {
+        has_ep3_dlc_trigger = yes
+    }
+
+    immediate = {
+        character:60677 = {
+            if = {
+                limit = {
+                    is_alive = yes
+                }
+                save_scope_as = daughter_jeanne
+
+                location = {
+                    save_scope_as = daughter_location
+                }
+            }
+        }
+
+        title:b_lordaeron = {
+            save_scope_as = barony_lordaeron
+        }
+
+
+
+        character:60676 = {
+            if = {
+                limit = {
+                    is_alive = yes
+                }
+                save_scope_as = husband_kiril
+            }
+        }
+
+        character:60001 = { # Terenas Menethil
+                save_scope_as = father_terenas
+        }
+
+        character:60003 = { # Arthas Menethil
+                save_scope_as = brother_arthas
+        }
+
+		location = {
+			save_scope_as = current_location
+		}
+    }
+
+
+}
+
+
+#The Crown's Finest
+calia_events.2 = {
+    type = character_event
+    title = calia_events.2.title
+    desc = calia_events.2.desc
+    theme = laamp
+    override_background = { reference = ep3_campfire }
+
+    left_portrait = {
+        character = root
+        animation = stayback
+    }
+
+    right_portrait = {
+        character = scope:royal_guard
+        animation = wrestling_yield_start
+    }
+
+    option = {
+        name = calia_events.2.a
+        ROOT = {
+            add_courtier = scope:royal_guard
+        }
+
+        scope:royal_guard = {
+            add_opinion = {
+                target = ROOT
+                modifier = grateful_opinion
+				opinion = 20
+            }
+        }
+        stress_impact = {
+            compassionate = minor_stress_impact_loss
+            paranoid = major_stress_impact_gain
+            trusting = medium_stress_impact_loss
+        }
+
+    }
+
+    option = {
+        name = calia_events.2.b
+
+        ROOT = {
+            add_trait_xp = {
+                trait = fugitive_of_the_plaguelands
+                value = -5
+            }
+        }
+
+        hidden_effect = {
+            scope:royal_guard = {
+                death = {
+                    death_reason = death_vanished 
+                }
+            }            
+        }
+
+        stress_impact = {
+			paranoid = major_stress_impact_loss
+			trusting = medium_stress_impact_gain
+		}
+
+    }
+
+    immediate = {
+		location = {
+			save_scope_as = current_location
+		}
+
+        create_character = {
+            location = scope:current_location
+            template = lordaeron_royal_guard_character
+            save_scope_as = royal_guard
+        }
+    }
+}
+
+
+
+calia_events.3 = {
+    type = character_event
+    title = calia_events.3.title
+    desc = calia_events.3.desc
+    theme = dynasty
+	window = visit_settlement_window
+    override_background = { reference = terrain }
+
+    left_portrait = {
+        character = root
+        animation = personality_content
+    }
+
+
+
+
+    # Name the new dynasty from the town where your family was at the start
+    option = {
+        name = calia_events.3.southshore
+
+        trigger = {
+            has_global_variable = family_starting_location
+        }
+        
+
+        root = {
+            house = {
+                set_house_name = "[GetGlobalVariable('family_starting_location').GetProvince.GetNameNoTooltip]"
+                remove_global_variable = mother_house
+            }
+        }
+        
+		custom_tooltip = calia_events.3.southshore.tt
+    }
+
+
+
+
+
+    # Name the new dynasty from the name of your mother's house
+    option = {
+        name = calia_events.3.mother
+
+        trigger = {
+            root = {
+                mother = {
+                    exists = this
+                    
+                    house = {
+                        exists = this
+                    }
+                }
+            }
+        }
+        
+        root = {
+            house = {
+                set_house_name = "[GetGlobalVariable('mother_house_var').House.GetNameNoTooltip]"
+                remove_global_variable = mother_house_var
+            }
+        }
+
+		custom_tooltip = calia_events.3.mother.tt
+    }
+
+
+
+
+
+    # Name the dynasty from your current location
+    option = {
+        name = calia_events.3.current_location
+
+        root = {
+            house = {
+                set_house_name = "[GetGlobalVariable('current_location_var').GetProvince.GetNameNoTooltip]"
+                remove_global_variable = current_location_var
+            }
+        }
+
+		custom_tooltip = calia_events.3.current_location.tt
+    }
+
+
+
+
+
+    # Don't name the dynasty right now
+    option = {
+        name = calia_events.3.undecided
+    }
+
+
+
+
+
+
+    immediate = {
+		play_music_cue = "mx_cue_faith_conversion"
+
+        if = {
+            limit = {
+                has_global_variable = family_starting_location
+            }
+
+            # We retrieve the location where the family started
+            global_var:family_starting_location = {
+                save_scope_as = where_family_started_scope
+            }
+        }
+
+
+        # Mother's house
+        root = {
+            mother = {
+                house = {
+                    save_scope_as = mother_house_scope
+
+                    set_global_variable = {
+                        name = mother_house_var
+                        value = scope:mother_house_scope
+                    }                    
+                }
+            }
+        }
+
+        # Current location
+		location = {
+			save_scope_as = current_location_scope
+
+            set_global_variable = {
+                name = current_location_var
+                value = scope:current_location_scope
+            }
+		}
+    }
+}
+
+
+
+

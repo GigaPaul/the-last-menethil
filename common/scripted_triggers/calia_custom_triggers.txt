@@ -1,0 +1,25 @@
+is_a_possible_supporter = {
+    save_temporary_scope_as = target
+
+    OR = {
+        # The target is allied to the player
+        is_allied_to = root
+
+        # The player has a strong hook on the target
+        root = { has_strong_usable_hook = scope:target }
+    }
+}
+
+is_a_union_leader = {
+    save_temporary_scope_as = target
+    any_in_global_list = {
+        variable = all_unions
+        story_owner = target
+    }
+}
+
+is_a_possible_supporter_and_leader = {
+    # Target is the ruler of a union
+    is_a_union_leader = yes
+    is_a_possible_supporter = yes
+}

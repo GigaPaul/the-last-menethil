@@ -1,0 +1,7 @@
+﻿l_english:
+  calia_events.1.title: "A long road ahead"
+  calia_events.1.desc: "Two years ago, my [ROOT.Char.Custom2('RelationToMe', SCOPE.sC('brother_arthas'))] [brother_arthas.GetFirstName] returned from his campaign against the undead in Northrend, but [brother_arthas.GetHerHis] heroic arrival in [barony_lordaeron.GetBaseNameNoTierNoTooltip] quickly turned into a tragedy when [brother_arthas.GetSheHe] put our [ROOT.Char.Custom2('RelationToMe', SCOPE.sC('father_terenas'))] to the sword.\n\nSince that ominous day I have hidden—hidden from prowling ghouls and ambitious warlords alike, keeping myself alive only in the hope of seeing my [ROOT.Char.Custom2('RelationToMe', SCOPE.sC('daughter_jeanne'))] [daughter_jeanne.GetFirstName] again, kept safely by [daughter_jeanne.GetHerHis] [daughter_jeanne.Custom2('RelationToMe', SCOPE.sC('husband_kiril'))] in [daughter_location.GetName].\n\nIt's still dangerous out there. The undead still hunt the living and the living only wish to see me dead or to use me to usurp my late [ROOT.Char.Custom2('RelationToMe', SCOPE.sC('father_terenas'))]'s throne. Leaving [current_location.GetName] could be fatal…\n\nYet, I can't live without my [daughter_jeanne.GetFirstNameNoTooltip]."
+  calia_events.1.a: "I must depart for [daughter_location.GetNameNoTooltip] now!"
+  calia_events.1.b: "Now is not the time, it's still too dangerous out there."
+
+  plaguelands_fugitive_family_member_of_var_desc: "You are a fugitive, it would be dangerous for [recipient.GetHerHim] to join you."

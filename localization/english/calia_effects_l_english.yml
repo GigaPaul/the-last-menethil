@@ -1,0 +1,12 @@
+﻿l_english:
+  I_CHOSE_MAIN_SUPPORTER_EFFECT: "You chose [TARGET_CHARACTER.GetShortUIName|U] and the #V [TARGET_CHARACTER.Custom('GetPolFactionName')]#! as your supporter"
+  THEY_CHOSE_MAIN_SUPPORTER_EFFECT: "[CHARACTER.GetShortUIName|U] chose [TARGET_CHARACTER.GetShortUIName|U] and the #V [TARGET_CHARACTER.Custom('GetPolFactionName')]#! as [CHARACTER.GetHerHis] supporter"
+  CHOSE_MAIN_SUPPORTER_EFFECT: "Chose [TARGET_CHARACTER.GetShortUIName|U] and the #V [TARGET_CHARACTER.Custom('GetPolFactionName')]#! as their supporter"
+  I_CHOOSE_MAIN_SUPPORTER_EFFECT: "You choose [TARGET_CHARACTER.GetShortUIName|U] and the #V [TARGET_CHARACTER.Custom('GetPolFactionName')]#! as your supporter\n@warning_icon! #warning You can only get one supporter, choose wisely!#!"
+  THEY_CHOOSE_MAIN_SUPPORTER_EFFECT: "[CHARACTER.GetShortUIName|U] chooses [TARGET_CHARACTER.GetShortUIName|U] and the #V [TARGET_CHARACTER.Custom('GetPolFactionName')]#! as [CHARACTER.GetHerHis] supporter"
+  CHOOSE_MAIN_SUPPORTER_EFFECT: "Choose [TARGET_CHARACTER.GetShortUIName|U] and the #V [TARGET_CHARACTER.Custom('GetPolFactionName')]#! as their supporter"
+
+  set_competition_level: "[SelectLocalization(GreaterThanOrEqualTo_int32(competition_level, 3), 'testtruc', 'testtruc2')]"
+  testtruc: "bidukle"
+  testtruc2: "bidukle2"
+  # set_competition_level: "#bold Thanks to the number of [union_leaders|E] competing for your [claims|E], you will gain #P [competition_level]#! bonuses #!"

@@ -1,0 +1,703 @@
+﻿namespace = drive_the_narrative
+
+# Hidden event triggered by Drive the narrative decision
+# Checks which event to show to the player based on how much supporters they got
+drive_the_narrative.0 = {
+    hidden = yes
+
+
+    immediate = {
+        every_in_global_list = {
+            variable = all_unions
+            # story_owner = { save_temporary_scope_as = union_leader }
+
+            if = {
+                limit = {
+                    story_owner = { is_a_possible_supporter = yes }
+                }
+
+                add_to_list = {
+                    name = calia_allies
+                    value = story_owner
+                }
+            }
+        }
+
+        if = {
+            limit = {
+                list_size = {
+                    name = calia_allies
+                    value > 1
+                }
+            }
+
+            # There are more than one supporter, make the player choose which to keep
+            trigger_event = drive_the_narrative.1
+        }
+        # There are only one supporter, skip to the actual event
+        else_if = {
+            limit = {
+                list_size = {
+                    name = calia_allies
+                    value = 1
+                }
+            }
+            
+            ordered_in_list = {
+                list = calia_allies
+                position = 0
+                save_scope_as = sole_supporter
+            }
+
+            set_global_variable = {
+                name = chosen_supporter
+                value = scope:sole_supporter
+            }
+
+            trigger_event = drive_the_narrative.4
+        }
+        else = {
+            debug_log = "[LAST_MENETHIL] Drive the Narrative event triggered with no supporters found."
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+# Drive the narrative, Choosing my side, first slide
+drive_the_narrative.1 = {
+    type = character_event
+    title = drive_the_narrative.title
+    theme = diplomacy
+	window = visit_settlement_window
+    
+
+    # desc = drive_the_narrative.1.desc
+    desc = {
+        first_valid = {
+            # If the player already saw this screen and went back
+            triggered_desc = {
+                trigger = { exists = scope:seen_first_slide }
+                desc = drive_the_narrative.1.desc_resume_plenty_supporters
+            }
+            # If the player is seeing this screen for the first time
+            # A couple supporters
+            triggered_desc = {
+                trigger = {
+                    list_size = {
+                        name = calia_allies
+                        value = 2
+                    }
+                }
+                desc = drive_the_narrative.1.desc_init_couple_supporters
+            }
+
+            # Wow, so many supporters !
+            desc = drive_the_narrative.1.desc_init_plenty_supporters
+        }
+
+        first_valid = {
+            triggered_desc = {
+                trigger = {
+                    list_size = {
+                        name = calia_allies
+                        value > 3
+                    }
+                }
+                desc = drive_the_narrative.1.desc_outro_too_much_supporters
+            }
+        }
+    }
+
+	
+    # Override Background
+    override_background = {
+        reference = council_chamber
+    }
+
+
+    left_portrait = {
+        character = root
+        animation = thinking
+    }
+
+
+    right_portrait = {
+        character = scope:first_ally
+        animation = personality_content
+    }
+
+
+    lower_left_portrait = {
+        character = scope:second_ally
+        animation = personality_content
+    }
+
+
+    lower_center_portrait = {
+        character = scope:third_ally
+        animation = personality_content
+    }
+    
+
+    option = {
+        name = drive_the_narrative.1.first_ally
+
+        highlight_portrait = scope:first_ally
+        
+        set_main_supporter = {
+            SUPPORTER = scope:first_ally
+        }
+
+        set_competition_level = { NB_SUPPORTERS = list_size:calia_allies }
+
+        trigger_event = drive_the_narrative.4
+    }
+    
+
+    option = {
+        name = drive_the_narrative.1.second_ally
+
+        trigger = {
+            exists = scope:second_ally
+        }
+
+        highlight_portrait = scope:second_ally
+        
+        set_main_supporter = {
+            SUPPORTER = scope:second_ally
+        }
+
+        trigger_event = drive_the_narrative.4
+    }
+    
+
+    option = {
+        name = drive_the_narrative.1.third_ally
+
+        trigger = {
+            exists = scope:third_ally
+        }
+
+        highlight_portrait = scope:third_ally
+        
+        set_main_supporter = {
+            SUPPORTER = scope:third_ally
+        }
+
+        trigger_event = drive_the_narrative.4
+    }
+    
+
+    # If there are even more allies.
+    option = {
+        name = drive_the_narrative.1.next_allies
+
+        trigger = {
+            list_size = {
+                name = calia_allies
+                value > 3
+            }
+        }
+
+        custom_tooltip = {
+            text = drive_the_narrative.next_allies_tooltip
+        }
+
+        save_scope_value_as = {
+            name = seen_first_slide
+            value = 1
+        }
+
+        trigger_event = drive_the_narrative.2
+    }
+    
+
+    # If the player doesn't want to continue anymore.
+    option = {
+        name = drive_the_narrative.abandon
+
+        trigger = {
+            list_size = {
+                name = calia_allies
+                value <= 3
+            }
+        }
+
+        quit_choosing_my_side_event = yes
+    }
+    
+
+    immediate = {
+        set_variable = {
+            name = competition_level
+            years = 2
+        }
+
+        # This is the most powerful asset Calia has. There should always be at least one
+        ordered_in_list = {
+            list = calia_allies
+            order_by = max_military_strength
+            position = 0
+            save_scope_as = first_ally
+        }
+
+        # If there is a second asset
+        if = {
+            limit = {
+				list_size = {
+					name = calia_allies
+					value > 1
+				}
+            }
+
+            ordered_in_list = {
+                list = calia_allies
+                order_by = max_military_strength
+                position = 1
+                save_scope_as = second_ally
+            }            
+        }
+
+        # If there are even a third asset
+        if = {
+            limit = {
+				list_size = {
+					name = calia_allies
+					value > 2
+				}
+            }
+
+            ordered_in_list = {
+                list = calia_allies
+                order_by = max_military_strength
+                position = 2
+                save_scope_as = third_ally
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+# Drive the narrative, Choosing my side, second slide
+drive_the_narrative.2 = {
+    type = character_event
+    title = drive_the_narrative.title
+    theme = diplomacy
+	window = visit_settlement_window
+    
+
+    desc = {
+        first_valid = {
+            # Just one last supporter
+            triggered_desc = {
+                trigger = {
+                    list_size = {
+                        name = calia_allies
+                        value = 4
+                    }
+                }
+                desc = drive_the_narrative.2.desc_last_supporter
+            }
+            # A couple supporters
+            triggered_desc = {
+                trigger = {
+                    list_size = {
+                        name = calia_allies
+                        value = 5
+                    }
+                }
+                desc = drive_the_narrative.2.desc_couple_supporters
+            }
+
+            # Wow, so many supporters !
+            desc = drive_the_narrative.2.desc_plenty_supporters
+        }
+
+        first_valid = {
+            triggered_desc = {
+                trigger = {
+                    list_size = {
+                        name = calia_allies
+                        value > 6
+                    }
+                }
+                desc = drive_the_narrative.2.desc_outro_too_much_supporters
+            }
+        }
+    }
+
+	
+    # Override Background
+    override_background = {
+        reference = council_chamber
+    }
+
+
+    left_portrait = {
+        character = root
+        animation = thinking
+    }
+
+
+    right_portrait = {
+        character = scope:fourth_ally
+        animation = personality_content
+    }
+
+
+    lower_left_portrait = {
+        character = scope:fifth_ally
+        animation = personality_content
+    }
+
+
+    lower_center_portrait = {
+        character = scope:sixth_ally
+        animation = personality_content
+    }
+    
+
+    option = {
+        name = drive_the_narrative.2.fourth_ally
+
+        highlight_portrait = scope:fourth_ally
+        
+        set_main_supporter = {
+            SUPPORTER = scope:fourth_ally
+        }
+
+        trigger_event = drive_the_narrative.4
+    }
+    
+
+    option = {
+        name = drive_the_narrative.2.fifth_ally
+
+        trigger = {
+            exists = scope:fifth_ally
+        }
+
+        highlight_portrait = scope:fifth_ally
+        
+        set_main_supporter = {
+            SUPPORTER = scope:fifth_ally
+        }
+
+        trigger_event = drive_the_narrative.4
+    }
+    
+
+    option = {
+        name = drive_the_narrative.2.sixth_ally
+
+        trigger = {
+            exists = scope:sixth_ally
+        }
+
+        highlight_portrait = scope:sixth_ally
+        
+        set_main_supporter = {
+            SUPPORTER = scope:sixth_ally
+        }
+
+        trigger_event = drive_the_narrative.4
+    }
+    
+
+    # If there are even more allies.
+    option = {
+        name = drive_the_narrative.2.next_allies
+
+        trigger = {
+            list_size = {
+                name = calia_allies
+                value > 6
+            }
+        }
+
+        custom_tooltip = {
+            text = drive_the_narrative.next_allies_tooltip
+        }
+
+        trigger_event = drive_the_narrative.3
+    }
+
+
+    option = {
+        name = drive_the_narrative.go_back
+
+        trigger = {
+            list_size = {
+                name = calia_allies
+                value <= 6
+            }
+        }
+
+        custom_tooltip = {
+            text = drive_the_narrative.go_back_tooltip
+        }
+
+        trigger_event = drive_the_narrative.1
+    }
+    
+
+    # If the player doesn't want to continue anymore.
+    option = {
+        name = drive_the_narrative.abandon
+
+        trigger = {
+            list_size = {
+                name = calia_allies
+                value <= 6
+            }
+        }
+
+        quit_choosing_my_side_event = yes
+    }
+    
+
+    immediate = {
+        # This is the most powerful asset Calia has. There should always be at least one
+        ordered_in_list = {
+            list = calia_allies
+            order_by = max_military_strength
+            position = 3
+            save_scope_as = fourth_ally
+        }
+
+        # If there is a second asset
+        if = {
+            limit = {
+				list_size = {
+					name = calia_allies
+					value > 4
+				}
+            }
+
+            ordered_in_list = {
+                list = calia_allies
+                order_by = max_military_strength
+                position = 4
+                save_scope_as = fifth_ally
+            }            
+        }
+
+        # If there are even a third asset
+        if = {
+            limit = {
+				list_size = {
+					name = calia_allies
+					value > 5
+				}
+            }
+
+            ordered_in_list = {
+                list = calia_allies
+                order_by = max_military_strength
+                position = 5
+                save_scope_as = sixth_ally
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+# Drive the narrative, Choosing my side, third slide
+drive_the_narrative.3 = {
+    type = character_event
+    title = drive_the_narrative.title
+    theme = diplomacy
+	window = visit_settlement_window
+    desc = drive_the_narrative.3.desc_last_supporter
+
+	
+    # Override Background
+    override_background = {
+        reference = council_chamber
+    }
+
+
+    left_portrait = {
+        character = root
+        animation = thinking
+    }
+
+
+    right_portrait = {
+        character = scope:seventh_ally
+        animation = personality_content
+    }
+    
+
+    option = {
+        name = drive_the_narrative.3.seventh_ally
+
+        highlight_portrait = scope:seventh_ally
+        
+        set_main_supporter = {
+            SUPPORTER = scope:seventh_ally
+        }
+
+        trigger_event = drive_the_narrative.4
+    }
+    
+
+    option = {
+        name = drive_the_narrative.go_back
+
+        custom_tooltip = {
+            text = drive_the_narrative.go_back_tooltip
+        }
+
+        trigger_event = drive_the_narrative.1
+    }
+    
+    
+    # If the player doesn't want to continue anymore.
+    option = {
+        name = drive_the_narrative.abandon
+        quit_choosing_my_side_event = yes
+    }
+    
+
+    immediate = {
+        # This is the most powerful asset Calia has. There should always be at least one
+        ordered_in_list = {
+            list = calia_allies
+            order_by = max_military_strength
+            position = 6
+            save_scope_as = seventh_ally
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+# Drive the narrative, actual event
+drive_the_narrative.4 = {
+    type = character_event
+    title = drive_the_narrative.4.title
+    theme = realm
+	window = visit_settlement_window
+    
+
+    desc = {
+        desc = drive_the_narrative.4.desc_intro
+
+        first_valid = {
+            # The supporter is an ally, no need to blackmail them!
+            triggered_desc = {
+                trigger = {
+                    is_allied_to = scope:main_supporter
+                }
+                desc = drive_the_narrative.4.desc_allied_supporter
+            }
+
+            # Yeah clearly here blackmail was necessary
+            desc = drive_the_narrative.4.desc_hooked_supporter
+        }
+
+        desc = drive_the_narrative.4.desc_conclusion
+    }
+
+
+    # Override Background
+    override_background = {
+        reference = council_chamber
+    }
+
+
+    left_portrait = {
+        character = root
+        animation = personality_content
+    }
+
+
+    right_portrait = {
+        character = scope:main_supporter
+
+        # Animation if supporter is an ally
+        triggered_animation = {
+            trigger = {
+                root = { is_allied_to = scope:main_supporter }
+            }
+            animation = interested
+        }
+        # Animation if supporter is being blackmailed
+        triggered_animation = {
+            trigger = {
+                root = { has_strong_usable_hook = scope:main_supporter }
+            }
+            animation = shame
+        }
+    }
+    
+
+    option = {
+        name = drive_the_narrative.4.confirm
+    }
+    
+
+    immediate = {
+		play_music_cue = "mx_cue_faith_conversion"
+
+        global_var:chosen_supporter = {
+            save_scope_as = main_supporter
+            # For the event background
+            save_scope_as = bg_override_char
+        }
+
+        # Select who will talk to Calia during the event
+        if = {
+            # The Second if there is one
+            limit = {
+				employs_court_position = second_camp_officer
+				any_court_position_holder = {
+					type = second_camp_officer
+					is_available_ai_adult = yes
+				}
+            }
+            random_court_position_holder = {
+                type = second_camp_officer
+                save_scope_as = second
+            }
+        }
+        # Or the follower with most opinion
+        else = {
+            random_courtier = {
+                save_scope_as = second
+            }
+        }
+    }
+}

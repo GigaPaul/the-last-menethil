@@ -1,0 +1,74 @@
+set_main_supporter = {
+    custom_description = {
+        text = set_main_supporter
+        object = $SUPPORTER$
+
+        set_global_variable = {
+            name = chosen_supporter
+            value = $SUPPORTER$
+        }
+
+        $SUPPORTER$ = {
+            save_scope_as = SUPPORTER
+        }
+    }
+}
+
+quit_choosing_my_side_event = {
+        custom_tooltip = {
+            text = drive_the_narrative.abandon_tooltip
+        }
+
+        custom_tooltip = {
+            text = drive_the_narrative.abandon_reimburse_tooltip
+
+            save_scope_value_as = {
+                name = decision_prestige_cost
+                value = 2500
+            }
+            add_prestige_no_experience = scope:decision_prestige_cost
+        }
+}
+
+set_competition_level = {
+    custom_tooltip = {
+        text = set_competition_level
+
+        if = {
+            limit = {
+                $NB_SUPPORTERS$ > 6
+            }
+
+            save_scope_value_as = {
+                name = competition_level
+                value = 3
+            }
+        }
+        else_if = {
+            limit = {
+                $NB_SUPPORTERS$ > 3
+            }
+
+            save_scope_value_as = {
+                name = competition_level
+                value = 2
+            }
+        }
+        else_if = {
+            limit = {
+                $NB_SUPPORTERS$ > 1
+            }
+
+            save_scope_value_as = {
+                name = competition_level
+                value = 1
+            }
+        }
+        else = {
+            save_scope_value_as = {
+                name = competition_level
+                value = 0
+            }
+        }
+    }
+}

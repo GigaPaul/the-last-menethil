@@ -1,0 +1,34 @@
+quarterly_playable_pulse = {
+    random_on_action = {
+        chance_to_happen = 75
+
+        # In order to get 10% chances for this event to trigger.
+        # To change where there are more events
+        90 = 0
+        10 = calia_on_action_royal_guard_event
+    }
+	on_actions = {
+        calia_on_action_royal_guard_event
+    }
+}
+
+calia_on_action_royal_guard_event = {
+    trigger = {
+		has_ep3_dlc_trigger = yes
+		is_landless_adventurer = yes
+		is_imprisoned = no
+        is_ai = no
+        has_trait = fugitive_of_the_plaguelands
+        current_date >= 603.5.1
+    }
+
+    effect = {
+        # Calia Menethil
+        character:60004 ?= {
+            trigger_event = {
+                id = calia_events.2
+                days = { 10 40 }
+            }
+        }
+    }
+}

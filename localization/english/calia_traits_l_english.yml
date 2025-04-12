@@ -1,0 +1,5 @@
+﻿l_english:
+  trait_fugitive_of_the_plaguelands: "Fugitive of the Plaguelands"
+  trait_fugitive_of_the_plaguelands_desc: "[ROOT.GetCharacter.GetFirstNameNoTooltip] was an important person before the fall of Lordaeron. Dangerous people would like to get their hands on [ROOT.GetCharacter.GetHerHim]."
+  trait_track_fugitive_of_the_plaguelands: "Notoriety"
+  trait_track_fugitive_of_the_plaguelands_desc: "While being well-known in the Kingdom of Lordaeron was beneficial, it is now a risk in the Plaguelands. The more people are aware of your existence, the less secure you will be."

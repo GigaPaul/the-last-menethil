@@ -1,0 +1,30 @@
+fugitive_of_the_plaguelands = {
+	category = fame
+	shown_in_ruler_designer = no
+    icon = "fugitive_of_the_plaguelands.dds"
+
+    character_travel_speed = -20
+
+    track = {
+        0 = {
+            enemy_hostile_scheme_success_chance_add = -20
+	        stress_loss_mult = 0.2
+        }
+        25 = {
+            enemy_hostile_scheme_success_chance_add = 10
+	        stress_loss_mult = -0.1
+        }
+        50 = {
+            enemy_hostile_scheme_success_chance_add = 10
+	        stress_loss_mult = -0.1
+        }
+        75 = {
+            enemy_hostile_scheme_success_chance_add = 10
+	        stress_gain_mult = 0.1
+        }
+        100 = {
+            enemy_hostile_scheme_success_chance_add = 10
+	        stress_gain_mult = 0.1
+        }
+    }
+}
