@@ -125,9 +125,8 @@ calia_drive_narrative_decision = {
     }
 
     effect = {
-        remove_trait = fugitive_of_the_plaguelands
+        custom_tooltip = calia_drive_narrative_decision_effect_will_loose_trait
 		custom_tooltip = calia_drive_narrative_decision_effect_choose_supporter
-		# custom_tooltip = calia_drive_narrative_decision_effect_plenty_supporters_bonus
 
         trigger_event = drive_the_narrative.0
     }

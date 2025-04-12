@@ -689,6 +689,8 @@ drive_the_narrative.4 = {
     immediate = {
 		play_music_cue = "mx_cue_faith_conversion"
 
+        remove_trait = fugitive_of_the_plaguelands
+
         global_var:chosen_supporter = {
             save_scope_as = main_supporter
             # For the event background
