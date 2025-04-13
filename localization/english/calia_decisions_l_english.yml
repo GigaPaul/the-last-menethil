@@ -15,7 +15,7 @@
   calia_has_strong_hook_on_leader: "You have an available [strong_hook|E] on a [union_leader|E]"
   calia_drive_narrative_decision_effect_choose_supporter: "Securing more [alliances|E] with [union_leaders|E] and [strong_hooks|E] on [union_leaders|E] will offer more benefits.\n\n#weak $calia_drive_narrative_decision_effect_plenty_supporters_bonus$#!"
   calia_drive_narrative_decision_effect_will_loose_trait: "You will lose the [trait|E] [GetTrait('fugitive_of_the_plaguelands').GetName(GetNullCharacter)|V]"
-  calia_drive_narrative_decision_effect_plenty_supporters_bonus: "In the case of multiple [alliances|E] with [union_leaders|E] or [strong_hooks|E] on multiple [union_leaders|E], you will have to choose which [union|E] will press your [claims|E].\nThe more [union_leaders|E] that compete for you, the more bonuses will be available."
+  calia_drive_narrative_decision_effect_plenty_supporters_bonus: "In the case of multiple [union_leaders|E] meeting the criteria below, you will have to choose which [union|E] will press your [claims|E].\nThe more [union_leaders|E] that compete for you, the more bonuses will be available."
   calia_drive_narrative_decision_confirm: "Let the Plaguelands know my name!"
 
   calia_camp_not_in_lordaeron_tooltip: "Your [camp|E] is not in the #V Lordaeron#! region"
