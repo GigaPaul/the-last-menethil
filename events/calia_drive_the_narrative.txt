@@ -686,17 +686,6 @@ drive_the_narrative.4 = {
             }
         }
 
-        # first_valid = {
-        #     triggered_desc = {
-        #         trigger = {
-        #             scope:main_supporter != scope:power_holder
-        #         }
-        #         desc = drive_the_narrative.4.desc.regent
-        #     }
-
-        #     desc = drive_the_narrative.4.desc.power_not_shared
-        # }
-
         desc = drive_the_narrative.4.desc_conclusion
     }
 
@@ -755,7 +744,7 @@ drive_the_narrative.4 = {
 
 
     lower_center_portrait = {
-        character = scope:second
+        character = scope:helper
     }
     
 
@@ -786,25 +775,175 @@ drive_the_narrative.4 = {
             }
         }
 
-        # Select who will talk to Calia during the event
+
+
+
+
+        # HELPER SELECTION
+        # This is the guy that is going to help Calia during her speech
+
+        # If the player has followers
         if = {
-            # The Second if there is one
             limit = {
-				employs_court_position = second_camp_officer
-				any_court_position_holder = {
-					type = second_camp_officer
-					is_available_ai_adult = yes
-				}
+                any_courtier = {
+                    is_available_ai_adult = yes
+                }
             }
-            random_court_position_holder = {
-                type = second_camp_officer
-                save_scope_as = second
+
+
+            # Witness
+            if = {
+                limit = {
+                    employs_court_position = witness_camp_officer
+                    any_court_position_holder = {
+                        type = witness_camp_officer
+                        is_available_ai_adult = yes
+                    }
+                }
+                random_court_position_holder = {
+                    type = witness_camp_officer
+                    save_scope_as = helper
+                }
+            }
+            # Laureate
+            else_if = {
+                limit = {
+                    employs_court_position = laureate_camp_officer
+                    any_court_position_holder = {
+                        type = laureate_camp_officer
+                        is_available_ai_adult = yes
+                    }
+                }
+                random_court_position_holder = {
+                    type = laureate_camp_officer
+                    save_scope_as = helper
+                }
+            }
+            # Second
+            else_if = {
+                limit = {
+                    employs_court_position = second_camp_officer
+                    any_court_position_holder = {
+                        type = second_camp_officer
+                        is_available_ai_adult = yes
+                    }
+                }
+                random_court_position_holder = {
+                    type = second_camp_officer
+                    save_scope_as = helper
+                }
+            }
+            # Check for someone appropriate in the player's camp
+            else = {
+                random_courtier = {
+                    limit = {
+                        is_available_ai_adult = yes
+                    }
+
+                    weight = {
+                        base = 150
+                        # Diplomat
+                        modifier = {
+				            has_trait = diplomat
+                            add = 75
+                        }
+                        # # Gregarious
+                        # modifier = {
+				        #     has_trait = gregarious
+                        #     add = 20
+                        # }
+                        # # Partner
+                        # modifier = {
+				        #     is_spouse_of = root
+                        #     add = 10
+                        # }
+                        # # Family member
+                        # modifier = {
+				        #     is_close_family_of = root
+                        #     add = 5
+                        # }
+                        # # High diplomacy
+                        # modifier = { factor = diplomacy }
+                    }
+
+                    save_scope_as = helper
+                }
             }
         }
-        # Or the follower with most opinion
+        # If there are people at your supporter's court
+        else_if = {
+            limit = {
+                scope:main_supporter = {
+                    OR = {
+                        any_courtier = {
+                            is_available_ai_adult = yes
+                        }
+
+                        any_court_position_holder = {
+                            is_available_ai_adult = yes
+                        }
+                    }
+                }
+            }
+
+
+            # Chancellor
+            scope:main_supporter = {
+                if = {
+                    limit = {
+                        exists = cp:councillor_chancellor
+                        cp:councillor_chancellor = { is_available_ai_adult = yes }
+                    }
+                    cp:councillor_chancellor = { save_scope_as = helper }
+                }
+                # Check for someone appropriate in the supporter's court
+                else = {
+                    random_courtier = {
+                        limit = {
+                            is_available_ai_adult = yes
+                        }
+
+                        weight = {
+                            base = 1
+                            # Diplomat
+                            modifier = {
+                                has_trait = diplomat
+                                add = 30
+                            }
+                            # Gregarious
+                            modifier = {
+                                has_trait = gregarious
+                                add = 20
+                            }
+                            # Partner
+                            modifier = {
+                                is_spouse_of = root
+                                add = 10
+                            }
+                            # Family member
+                            modifier = {
+                                is_close_family_of = root
+                                add = 5
+                            }
+                            # High diplomacy
+                            modifier = { factor = diplomacy }
+                        }
+                        
+                        save_scope_as = helper
+                    }
+                }
+            }
+
+        }
+        # Fallback if there are noone at your or your supporter's court
         else = {
-            random_courtier = {
-                save_scope_as = second
+            # Create a helper
+            create_character = {
+                location = scope:main_supporter.capital_province
+                template = tlm_diplomat_template
+                save_scope_as = helper
+                faith = scope:main_supporter.capital_province.faith
+                culture = scope:main_supporter.capital_province.culture
             }
         }
     }
