@@ -26,3 +26,16 @@ is_a_possible_supporter_and_leader = {
     is_a_union_leader = yes
     is_a_possible_supporter = yes
 }
+
+tlm_knows_target = {
+    OR = {
+		has_relation_lover = $TARGET$
+		has_relation_friend = $TARGET$
+		has_relation_soulmate = $TARGET$
+		has_relation_best_friend = $TARGET$
+        is_close_family_of = $TARGET$
+        is_consort_of = $TARGET$
+        is_courtier_of = $TARGET$
+        is_vassal_of = $TARGET$
+    }
+}

@@ -41,6 +41,11 @@ lordaeron_royal_guard_character = {
 		content = { }
 		wrathful = { }
 	}
+	
+	after_creation = {
+		#Assigns race trait
+		trigger_race_giving_no_gene_effect = yes
+	}
 }
 
 
@@ -67,7 +72,12 @@ tlm_diplomat_template = {
 	}
 
 	diplomacy = {
-		min_template_high_skill
-		max_template_high_skill
+		min_template_low_skill
+		max_template_low_skill
+	}
+	
+	after_creation = {
+		#Assigns race trait
+		trigger_race_giving_no_gene_effect = yes
 	}
 }

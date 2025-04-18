@@ -81,3 +81,64 @@ set_competition_level = {
         }
     }
 }
+
+
+
+
+
+tlm_select_helper = {
+    add_to_list = potential_helpers
+
+    set_variable = {
+        name = helper_score
+        value = diplomacy
+    }
+
+    # Diplomat
+    if = {
+        limit = {
+            has_trait = diplomat
+        }
+
+        change_variable = {
+            name = helper_score
+            add = 75
+        }
+    }
+
+    # Gregarious
+    if = {
+        limit = {
+            has_trait = gregarious
+        }
+
+        change_variable = {
+            name = helper_score
+            add = 20
+        }
+    }
+
+    # Partner
+    if = {
+        limit = {
+            is_spouse_of = $CHARACTER$
+        }
+
+        change_variable = {
+            name = helper_score
+            add = 10
+        }
+    }
+
+    # Family member
+    if = {
+        limit = {
+            is_close_family_of = $CHARACTER$
+        }
+
+        change_variable = {
+            name = helper_score
+            add = 5
+        }
+    }
+}
