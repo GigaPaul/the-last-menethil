@@ -76,3 +76,9 @@
   drive_the_narrative.4.desc_conclusion: "\n\nThe [main_supporter.Custom('GetPolFactionName')] listens. I must speak."
 
   drive_the_narrative.4.confirm: "Ok."
+
+  drive_the_narrative.6.t: "Catastrophe"
+  drive_the_narrative.6.desc: "What a catastrophe!\n\nI just received the news: [dead_character.GetTitledFirstName] was killed by the heinous [killer.GetTitledFirstName]! All my plans are falling apart, as [dead_character.GetTitledFirstNameNoTooltip] can no longer support me in my quest.\n\nMay [ROOT.Char.GetFaith.HighGodName] curse [killer.GetHerHim] for a thousand years!"
+  drive_the_narrative.6.a: "All that work for nothing."
+  drive_the_narrative.6.b: "And I shall be that curse made manifest!"
+  drive_the_narrative.6.refund.tt: "You have been reimbursed your @prestige_icon!#P [decision_prestige_cost]#!"

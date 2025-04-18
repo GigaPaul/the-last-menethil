@@ -1,0 +1,11 @@
+on_death = {
+    on_actions = {
+        tlm_on_death
+    }
+}
+
+tlm_on_death = {
+    events = {
+        drive_the_narrative.5
+    }
+}

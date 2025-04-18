@@ -49,12 +49,16 @@ drive_the_narrative.0 = {
                 save_scope_as = sole_supporter
             }
 
-            set_global_variable = {
-                name = chosen_supporter
-                value = scope:sole_supporter
+            set_main_supporter = {
+                SUPPORTER = scope:sole_supporter
+                SUPPORTED = root
             }
+            # set_global_variable = {
+            #     name = chosen_supporter
+            #     value = scope:sole_supporter
+            # }
 
-            trigger_event = drive_the_narrative.4
+            tlm_trigger_actual_event = yes
         }
         else = {
             debug_log = "[LAST_MENETHIL] Drive the Narrative event triggered with no supporters found."
@@ -154,11 +158,12 @@ drive_the_narrative.1 = {
         
         set_main_supporter = {
             SUPPORTER = scope:first_ally
+            SUPPORTED = root
         }
 
         set_competition_level = { NB_SUPPORTERS = list_size:calia_allies }
 
-        trigger_event = drive_the_narrative.4
+        tlm_trigger_actual_event = yes
     }
     
 
@@ -173,11 +178,12 @@ drive_the_narrative.1 = {
         
         set_main_supporter = {
             SUPPORTER = scope:second_ally
+            SUPPORTED = root
         }
 
         set_competition_level = { NB_SUPPORTERS = list_size:calia_allies }
 
-        trigger_event = drive_the_narrative.4
+        tlm_trigger_actual_event = yes
     }
     
 
@@ -192,11 +198,12 @@ drive_the_narrative.1 = {
         
         set_main_supporter = {
             SUPPORTER = scope:third_ally
+            SUPPORTED = root
         }
 
         set_competition_level = { NB_SUPPORTERS = list_size:calia_allies }
 
-        trigger_event = drive_the_narrative.4
+        tlm_trigger_actual_event = yes
     }
     
 
@@ -384,11 +391,12 @@ drive_the_narrative.2 = {
         
         set_main_supporter = {
             SUPPORTER = scope:fourth_ally
+            SUPPORTED = root
         }
 
         set_competition_level = { NB_SUPPORTERS = list_size:calia_allies }
 
-        trigger_event = drive_the_narrative.4
+        tlm_trigger_actual_event = yes
     }
     
 
@@ -403,11 +411,12 @@ drive_the_narrative.2 = {
         
         set_main_supporter = {
             SUPPORTER = scope:fifth_ally
+            SUPPORTED = root
         }
 
         set_competition_level = { NB_SUPPORTERS = list_size:calia_allies }
 
-        trigger_event = drive_the_narrative.4
+        tlm_trigger_actual_event = yes
     }
     
 
@@ -422,11 +431,12 @@ drive_the_narrative.2 = {
         
         set_main_supporter = {
             SUPPORTER = scope:sixth_ally
+            SUPPORTED = root
         }
 
         set_competition_level = { NB_SUPPORTERS = list_size:calia_allies }
 
-        trigger_event = drive_the_narrative.4
+        tlm_trigger_actual_event = yes
     }
     
 
@@ -570,11 +580,12 @@ drive_the_narrative.3 = {
         
         set_main_supporter = {
             SUPPORTER = scope:seventh_ally
+            SUPPORTED = root
         }
 
         set_competition_level = { NB_SUPPORTERS = list_size:calia_allies }
 
-        trigger_event = drive_the_narrative.4
+        tlm_trigger_actual_event = yes
     }
     
 
@@ -763,6 +774,13 @@ drive_the_narrative.4 = {
     option = {
         name = drive_the_narrative.4.confirm
     }
+
+
+    trigger = {
+        global_var:chosen_supporter = {
+            is_alive = yes
+        }
+    }
     
 
     immediate = {
@@ -950,5 +968,105 @@ drive_the_narrative.4 = {
             }            
         }
 
+    }
+}
+
+
+
+
+
+# Controller event checking if the selected supporter died between drive_the_narrative.[1,2,3] and drive_the_narrative.4
+drive_the_narrative.5 = {
+    hidden = yes
+
+    immediate = {
+        if = {
+            limit = {
+                has_variable = chosen_supporter_of
+            }
+
+            save_scope_as = dead_character
+            var:chosen_supporter_of = {
+                trigger_event = drive_the_narrative.6
+            }
+        }
+    }
+}
+
+drive_the_narrative.6 = {
+    title = drive_the_narrative.6.t
+    desc = drive_the_narrative.6.desc
+    type = character_event
+    theme = death
+
+    left_portrait = {
+        character = root
+        animation = disbelief
+    }
+
+    right_portrait = {
+        character = scope:dead_character
+        animation = dead
+    }
+
+    lower_left_portrait = scope:killer
+
+    option = {
+        name = drive_the_narrative.6.a
+
+        stress_impact = {
+			wrathful = medium_stress_impact_gain
+			lazy = medium_stress_impact_gain
+			impatient = medium_stress_impact_gain
+		}
+    }
+
+    option = {
+        name = drive_the_narrative.6.b
+
+        trigger = {
+            OR = {
+                has_trait = vengeful
+                has_trait = wrathful
+                has_trait = irritable
+            }
+        }
+
+        trait = vengeful
+        trait = wrathful
+        trait = irritable
+
+        stress_impact = {
+			vengeful = minor_stress_impact_loss
+			irritable = minor_stress_impact_loss
+		}
+
+        set_relation_rival = {
+            target = scope:killer
+            reason = tlm_rival_killed_my_supporter
+        }
+    }
+
+    immediate = {
+        character:42076 = {
+            save_scope_as = killer
+        }
+
+        character:60030 = {
+            save_scope_as = dead_character
+        }
+
+		play_music_cue = mx_cue_death
+
+        custom_tooltip = {
+            text = drive_the_narrative.6.refund.tt
+
+            save_scope_value_as = {
+                name = decision_prestige_cost
+                value = drive_the_narrative_decision_prestige_cost
+            }
+
+            add_prestige_no_experience = drive_the_narrative_decision_prestige_cost
+        }
     }
 }

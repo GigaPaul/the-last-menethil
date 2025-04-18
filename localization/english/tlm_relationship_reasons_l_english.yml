@@ -1,0 +1,3 @@
+﻿l_english:
+  tlm_rival_killed_my_supporter: "[TARGET_CHARACTER.GetShortUIName|U] killed the [union_leader|U] supporting [CHARACTER.GetShortUIName]."
+  tlm_rival_killed_my_supporter_corresponding: "[CHARACTER.GetShortUIName|U] killed the [union_leader|U] supporting [TARGET_CHARACTER.GetShortUIName]."

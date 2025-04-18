@@ -131,7 +131,7 @@ calia_drive_narrative_decision = {
     }
 
     cost = {
-        prestige = 2500
+        prestige = drive_the_narrative_decision_prestige_cost
     }
 
     effect = {

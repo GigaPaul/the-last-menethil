@@ -10,6 +10,10 @@ set_main_supporter = {
 
         $SUPPORTER$ = {
             save_scope_as = SUPPORTER
+            set_variable = {
+                name = chosen_supporter_of
+                value = $SUPPORTED$
+            }
         }
     }
 }
@@ -24,9 +28,9 @@ quit_choosing_my_side_event = {
 
             save_scope_value_as = {
                 name = decision_prestige_cost
-                value = 2500
+                value = drive_the_narrative_decision_prestige_cost
             }
-            add_prestige_no_experience = scope:decision_prestige_cost
+            add_prestige_no_experience = drive_the_narrative_decision_prestige_cost
         }
 }
 
@@ -140,5 +144,16 @@ tlm_select_helper = {
             name = helper_score
             add = 5
         }
+    }
+}
+
+
+
+
+
+tlm_trigger_actual_event = {
+    trigger_event = {
+        id = drive_the_narrative.4
+        days = { 1 2 }
     }
 }
