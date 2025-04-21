@@ -1,0 +1,181 @@
+namespace = tlm_death_management
+
+tlm_death_management.0001 = {
+	type = character_event
+	hidden = yes
+
+    immediate = {
+        if = {
+            limit = {
+                has_variable = chosen_supporter_of
+            }
+
+            save_scope_as = dead_character
+            var:chosen_supporter_of = {
+                # Queue up a death notification event.
+                trigger_event = {
+                    id = tlm_death_management.0002
+                    delayed = no
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+tlm_death_management.0002 = {
+	type = character_event
+	hidden = yes
+
+    immediate = {
+        if = {
+            limit = { exists = scope:killer }
+
+            # The player killed the union leader
+            if = {
+                limit = { scope:killer = root }
+                trigger_event = tlm_death_management.1000
+            }
+            # Someone else is the killer
+            else = {
+                trigger_event = tlm_death_management.2000
+            }
+        }
+        # Something else caused the death of the union leader
+        else = {
+            trigger_event = tlm_death_management.3000
+        }
+    }
+}
+
+
+
+
+
+# The player killed the union leader
+tlm_death_management.1000 = {
+	type = character_event
+    title = tlm_death_management.1000.t
+    desc = tlm_death_management.1000.desc
+    theme = death
+
+    left_portrait = {
+        character = root
+        animation = disapproval
+    }
+
+    right_portrait = {
+		character = scope:dead_character
+		animation = dead
+    }
+
+    immediate = {
+		play_music_cue = mx_cue_death
+
+        tlm_has_been_reimbursed_drive_the_narrative = yes
+    }
+
+    option = {
+        name = tlm_death_management.1000.a
+    }
+}
+
+
+
+
+
+# The killer is not the player but is known
+tlm_death_management.2000 = {
+	type = character_event
+    title = tlm_death_management.2000.t
+    desc = tlm_death_management.2000.desc
+    theme = death
+
+    left_portrait = {
+        character = root
+        animation = disbelief
+    }
+
+    right_portrait = {
+		character = scope:dead_character
+		animation = dead
+    }
+
+    lower_left_portrait = scope:killer
+
+    immediate = {
+		play_music_cue = mx_cue_death
+
+        tlm_has_been_reimbursed_drive_the_narrative = yes
+    }
+
+    option = {
+        name = tlm_death_management.2000.a
+
+        stress_impact = {
+			wrathful = medium_stress_impact_gain
+			lazy = medium_stress_impact_gain
+			impatient = medium_stress_impact_gain
+		}
+    }
+
+    option = {
+        name = tlm_death_management.2000.b
+
+        trigger = {
+            OR = {
+                has_trait = vengeful
+                has_trait = wrathful
+                has_trait = irritable
+            }
+        }
+
+        trait = vengeful
+        trait = wrathful
+        trait = irritable
+
+        stress_impact = {
+			vengeful = minor_stress_impact_loss
+			irritable = minor_stress_impact_loss
+		}
+
+        set_relation_rival = {
+            target = scope:killer
+            reason = tlm_rival_killed_my_supporter
+        }
+    }
+}
+
+
+
+
+# Something else caused the death of the union leader
+tlm_death_management.3000 = {
+	type = character_event
+    title = tlm_death_management.3000.t
+    desc = tlm_death_management.3000.desc
+    theme = death
+
+    left_portrait = {
+        character = root
+        animation = disbelief
+    }
+
+    right_portrait = {
+		character = scope:dead_character
+		animation = dead
+    }
+
+    immediate = {
+		play_music_cue = 
+        
+        tlm_has_been_reimbursed_drive_the_narrative = yes
+    }
+
+    option = {
+        name = tlm_death_management.2000.b
+    }
+}

@@ -975,23 +975,23 @@ drive_the_narrative.4 = {
 
 
 
-# Controller event checking if the selected supporter died between drive_the_narrative.[1,2,3] and drive_the_narrative.4
-drive_the_narrative.5 = {
-    hidden = yes
+# # Controller event checking if the selected supporter died between drive_the_narrative.[1,2,3] and drive_the_narrative.4
+# drive_the_narrative.5 = {
+#     hidden = yes
 
-    immediate = {
-        if = {
-            limit = {
-                has_variable = chosen_supporter_of
-            }
+#     immediate = {
+#         if = {
+#             limit = {
+#                 has_variable = chosen_supporter_of
+#             }
 
-            save_scope_as = dead_character
-            var:chosen_supporter_of = {
-                trigger_event = drive_the_narrative.6
-            }
-        }
-    }
-}
+#             save_scope_as = dead_character
+#             var:chosen_supporter_of = {
+#                 trigger_event = drive_the_narrative.6
+#             }
+#         }
+#     }
+# }
 
 drive_the_narrative.6 = {
     title = drive_the_narrative.6.t
@@ -1058,15 +1058,6 @@ drive_the_narrative.6 = {
 
 		play_music_cue = mx_cue_death
 
-        custom_tooltip = {
-            text = drive_the_narrative.6.refund.tt
-
-            save_scope_value_as = {
-                name = decision_prestige_cost
-                value = drive_the_narrative_decision_prestige_cost
-            }
-
-            add_prestige_no_experience = drive_the_narrative_decision_prestige_cost
-        }
+        tlm_has_been_reimbursed_drive_the_narrative = yes
     }
 }

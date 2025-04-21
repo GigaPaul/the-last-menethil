@@ -6,6 +6,7 @@ on_death = {
 
 tlm_on_death = {
     events = {
-        drive_the_narrative.5
+        # drive_the_narrative.5
+        tlm_death_management.0001
     }
 }

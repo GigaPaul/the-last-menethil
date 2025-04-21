@@ -1,0 +1,13 @@
+﻿l_english:
+  tlm_death_management.1000.t: "Merely A Setback "
+  tlm_death_management.1000.desc: "[dead_character.GetTitledFirstNameNoTooltip] left this realm, and with [dead_character.GetHerHim], all my dreams of reclaiming what was mine.\nWhile not everything is lost, I now need to find someone else to support my claims...\n\nAnd NOT kill them this time."
+  tlm_death_management.1000.a: "[dead_character.GetShortUINameNoTooltip] didn't give me a choice."
+
+  tlm_death_management.2000.t: "My Thwarted Claims"
+  tlm_death_management.2000.desc: "What a catastrophe!\n\nI just received the news: [dead_character.GetTitledFirstName] was killed by the heinous [killer.GetTitledFirstName]! All my plans are falling apart, as [dead_character.GetTitledFirstNameNoTooltip] can no longer support me in my quest.\n\nMay [ROOT.Char.GetFaith.HighGodName] curse [killer.GetHerHim] for a thousand years!"
+  tlm_death_management.2000.a: "All that work for nothing."
+  tlm_death_management.2000.b: "And I shall be that curse made manifest!"
+
+  tlm_death_management.3000.t: "My Unanswered Claims"
+  tlm_death_management.3000.desc: "What a disaster!\n\nI just received the news: [dead_character.GetTitledFirstNameNoTooltip] left this realm, and with [dead_character.GetHerHim], all my dreams of reclaiming what was mine.\nWhile not everything is lost, I now need to find someone else to support my claims."
+  tlm_death_management.3000.a: "All that work for nothing."

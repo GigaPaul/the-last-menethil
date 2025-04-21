@@ -34,6 +34,21 @@ quit_choosing_my_side_event = {
         }
 }
 
+
+
+tlm_has_been_reimbursed_drive_the_narrative = {
+    custom_tooltip = {
+        text = drive_the_narrative.refund.tt
+
+        save_scope_value_as = {
+            name = decision_prestige_cost
+            value = drive_the_narrative_decision_prestige_cost
+        }
+
+        add_prestige_no_experience = drive_the_narrative_decision_prestige_cost
+    }
+}
+
 set_competition_level = {
     if = {
         limit = {
